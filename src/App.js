@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from "react";
 import "./style.css";
-import {Card, IconButton} from "@material-ui/core";
-import {AddIcon} from '@material-ui/icons';
+import {Card, IconButton, Button} from "@material-ui/core";
+
+
+import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@material-ui/icons/Add';
+
 let embermage = [
   {
     name: 'Magma Spear',
@@ -34,7 +38,7 @@ export default function App() {
   let SkillList = skills.map((skill, index) => {
     let updateskill = (count) => {
       let arr = [...skills];
-      arr[index].rank+=count;
+      arr[index].rank = Math.min(15, Math.max(0, arr[index].rank+=count ));
       setSkills(arr);
     };
     return <Skill skill={skill} onchange={updateskill}/>
@@ -53,10 +57,11 @@ export default function App() {
 function Skill ({skill, onchange}) {
   return <div>
   {skill.rank}
-  <IconButton aria-label="delete">
-    <AddIcon />
-  </IconButton>
-  <Button  onClick={()=> onchange(-1)}/>
-  1234
+    <IconButton onClick={()=>onchange(1)}>
+      <AddIcon/>
+    </IconButton>
+    <IconButton onClick={()=>onchange(-1)}>
+      <RemoveIcon/>
+    </IconButton>
   </div>;
 }
