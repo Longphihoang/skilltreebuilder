@@ -57,6 +57,9 @@ export default function App() {
 function Skill ({skill, onchange}) {
   return <Card style={{width: '250px'}}>
   <CardHeader
+    avatar={<></>}
+    style={{backgroundColor:'darkred',
+            color:'white'}}
     title={skill.name}
   />
   <CardContent>
