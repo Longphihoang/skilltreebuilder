@@ -17,3 +17,9 @@ h1, p {
   display: absolute;
   bottom: 0;
 }
+
+.MuiCard-root{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

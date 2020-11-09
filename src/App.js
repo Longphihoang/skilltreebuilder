@@ -168,16 +168,18 @@ export default function App() {
 function Skill({ skill, onchange }) {
   return (
     <Card>
-      <CardHeader
-        avatar={<img class=".responsive-img" src={skill.img} />}
-        style={{ backgroundColor: "darkred", color: "white" }}
-        title={skill.name}
-        subheader={<div>{skill.rank}/15</div>}
-      />
-      <CardContent>
+      <div>
+        <CardHeader
+          avatar={<img class=".responsive-img" src={skill.img} />}
+          style={{ backgroundColor: "darkred", color: "white" }}
+          title={skill.name}
+          subheader={<div>{skill.rank}/15</div>}
+        />
         <Typography color="blue" align="right">
           {skill.mana[skill.rank - 1 < 0 ? 0 : skill.rank - 1]} mp
         </Typography>
+      </div>
+      <CardContent>
         <Typography>{skill.desc}</Typography>
         <div>
           <Typography>
@@ -187,32 +189,32 @@ function Skill({ skill, onchange }) {
             </p>
           </Typography>
         </div>
-        <div class="card-footer">
-          <Slider
-            value={skill.rank}
-            onChange={e => onchange(e.target.value)}
-            defaultValue={skill.rank}
-            aria-labelledby="discrete-slider-small-steps"
-            step={1}
-            marks
-            min={0}
-            max={15}
-            valueLabelDisplay="auto"
-          />
-          <IconButton
-            style={{ float: "right" }}
-            onClick={() => onchange(skill.rank + 1)}
-          >
-            <AddIcon />
-          </IconButton>
-          <IconButton
-            style={{ float: "right" }}
-            onClick={() => onchange(skill.rank - 1)}
-          >
-            <RemoveIcon />
-          </IconButton>
-        </div>
       </CardContent>
+      <CardActions>
+        <Slider
+          value={skill.rank}
+          onChange={e => onchange(e.target.value)}
+          defaultValue={skill.rank}
+          aria-labelledby="discrete-slider-small-steps"
+          step={1}
+          marks
+          min={0}
+          max={15}
+          valueLabelDisplay="auto"
+        />
+        <IconButton
+          style={{ float: "right" }}
+          onClick={() => onchange(skill.rank + 1)}
+        >
+          <AddIcon />
+        </IconButton>
+        <IconButton
+          style={{ float: "right" }}
+          onClick={() => onchange(skill.rank - 1)}
+        >
+          <RemoveIcon />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 }
