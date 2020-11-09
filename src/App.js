@@ -202,18 +202,20 @@ function Skill({ skill, onchange }) {
           max={15}
           valueLabelDisplay="auto"
         />
-        <IconButton
-          style={{ float: "right" }}
-          onClick={() => onchange(skill.rank + 1)}
-        >
-          <AddIcon />
-        </IconButton>
-        <IconButton
-          style={{ float: "right" }}
-          onClick={() => onchange(skill.rank - 1)}
-        >
-          <RemoveIcon />
-        </IconButton>
+        <div>
+          <IconButton
+            style={{ float: "right" }}
+            onClick={() => onchange(skill.rank + 1)}
+          >
+            <AddIcon />
+          </IconButton>
+          <IconButton
+            style={{ float: "right" }}
+            onClick={() => onchange(skill.rank - 1)}
+          >
+            <RemoveIcon />
+          </IconButton>
+        </div>
       </CardActions>
     </Card>
   );
