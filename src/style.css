@@ -1,3 +1,14 @@
 h1, p {
   font-family: Lato;
 }
+
+.skill-list {
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.responsive-img {
+  width: 100%;
+  height: auto;
+}
