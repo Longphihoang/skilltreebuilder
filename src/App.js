@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "./style.css";
-import {Card, IconButton, Button} from "@material-ui/core";
+import {Card, CardHeader, CardContent, CardActionArea, CardActions, Slider, IconButton, Button} from "@material-ui/core";
 
 
 import RemoveIcon from '@material-ui/icons/Remove';
@@ -38,7 +38,7 @@ export default function App() {
   let SkillList = skills.map((skill, index) => {
     let updateskill = (count) => {
       let arr = [...skills];
-      arr[index].rank = Math.min(15, Math.max(0, arr[index].rank+=count ));
+      arr[index].rank = Math.min(15, Math.max(0, arr[index].rank=count ));
       setSkills(arr);
     };
     return <Skill skill={skill} onchange={updateskill}/>
@@ -55,13 +55,30 @@ export default function App() {
 
 
 function Skill ({skill, onchange}) {
-  return <div>
-  {skill.rank}
-    <IconButton onClick={()=>onchange(1)}>
-      <AddIcon/>
-    </IconButton>
-    <IconButton onClick={()=>onchange(-1)}>
-      <RemoveIcon/>
-    </IconButton>
-  </div>;
+  return <Card style={{width: '250px'}}>
+  <CardHeader
+    title={skill.name}
+  />
+  <CardContent>
+    {skill.rank}
+ 
+      <IconButton onClick={()=>onchange(skill.rank + 1)}>
+        <AddIcon/>
+      </IconButton>
+      <IconButton onClick={()=>onchange(skill.rank -1)}>
+        <RemoveIcon/>
+      </IconButton>
+      <Slider
+        value={skill.rank}
+        onChange={(e) => onchange(e.target.value)}
+        defaultValue={skill.rank}
+        aria-labelledby="discrete-slider-small-steps"
+        step={1}
+        marks
+        min={0}
+        max={15}
+        valueLabelDisplay="auto"
+      />
+    </CardContent>
+  </Card>;
 }
